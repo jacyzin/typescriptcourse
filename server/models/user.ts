@@ -27,6 +27,17 @@ export default function(sequelize, DataTypes) {
                 allowNull: false
             }
         }
+    },{
+        freezeTableName: true
+    });
+    
+    User.sync({force: true}).then(function () {
+        return User.create({
+          title: 'Getting Started with PostgreSQL and Sequelize',
+          content: 'Hello there'
+        });
+    }).catch((err) => {
+      console.log(err);
     });
 
     return User;
