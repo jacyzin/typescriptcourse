@@ -1,6 +1,32 @@
 import { app, request, expect } from './config/helpers';
 
 describe('Testes de Integração', () => {
+
+    describe('GET /',() => {
+        it('Deve retornar a mensagem Página principal', done => {
+            request(app)
+            .get('/')
+            .end((error, res) => {
+                expect(res.status).to.equal(200);
+                expect(res.text).to.be.eql('Página principal');
+                done(error);
+            });
+        });
+    });
+
+    describe('GET /ola/:nome', () => {
+        it('Deve retornar a mensagem Olá, Typescript Course', done => {
+            const nome = 'Typescript Course';
+            request(app)
+            .get(`/ola/${nome}`)
+            .end((error, res) => {
+                expect(res.status).to.equal(200);
+                expect(res.text).to.be.eql(`Hello Typescript Course`);
+                done(error);                    
+            });
+        });
+    });
+
     describe('GET /api/users/all', () => {
         it('Deve retornar um json com todos os Usuários', done => {
             request(app)

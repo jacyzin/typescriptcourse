@@ -2,6 +2,29 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var helpers_1 = require("./config/helpers");
 describe('Testes de Integração', function () {
+    describe('GET /', function () {
+        it('Deve retornar a mensagem Página principal', function (done) {
+            helpers_1.request(helpers_1.app)
+                .get('/')
+                .end(function (error, res) {
+                helpers_1.expect(res.status).to.equal(200);
+                helpers_1.expect(res.text).to.be.eql('Página principal');
+                done(error);
+            });
+        });
+    });
+    describe('GET /ola/:nome', function () {
+        it('Deve retornar a mensagem Olá, Typescript Course', function (done) {
+            var nome = 'Typescript Course';
+            helpers_1.request(helpers_1.app)
+                .get("/ola/" + nome)
+                .end(function (error, res) {
+                helpers_1.expect(res.status).to.equal(200);
+                helpers_1.expect(res.text).to.be.eql("Hello Typescript Course");
+                done(error);
+            });
+        });
+    });
     describe('GET /api/users/all', function () {
         it('Deve retornar um json com todos os Usuários', function (done) {
             helpers_1.request(helpers_1.app)
