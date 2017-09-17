@@ -3,6 +3,7 @@
         "target": "es5",
         "module": "commonjs",
         "outDir": "build",
+        "watch": true,
         "typeRoots": [
             "../node_modules/@types"
         ],
@@ -12,7 +13,8 @@
     },
     "include": [
         "server/**/*.ts",
-        "server/*.ts"
+        "server/*.ts",
+        "tests/**/*.ts"
     ],
     "exclude": [
         "node_modules"
