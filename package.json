@@ -20,7 +20,8 @@
     "body-parser": "^1.18.1",
     "express": "^4.15.4",
     "morgan": "^1.8.2",
-    "pg": "^7.3.0"
+    "pg": "^7.3.0",
+    "sequelize": "^4.8.4"
   },
   "devDependencies": {
     "@types/chai": "^4.0.4",
