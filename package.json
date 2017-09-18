@@ -17,6 +17,7 @@
   "author": "Henry Jacyzin",
   "license": "ISC",
   "dependencies": {
+    "bluebird": "^3.5.0",
     "body-parser": "^1.18.1",
     "express": "^4.15.4",
     "http-status": "^1.0.1",
@@ -27,6 +28,7 @@
     "sequelize-cli": "^3.0.0-3"
   },
   "devDependencies": {
+    "@types/bluebird": "^3.5.11",
     "@types/chai": "^4.0.4",
     "@types/http-status": "^0.2.30",
     "@types/mocha": "^2.2.43",
