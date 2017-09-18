@@ -15,10 +15,10 @@ var Api = /** @class */ (function () {
         this.express.use(bodyParser.urlencoded({ extended: true }));
         this.express.use(bodyParser.json());
         this.express.use(errorHandlerApi_1.errorHandlerApi);
-        this.router(this.express);
+        this.router(this.express, this.auth);
     };
-    Api.prototype.router = function (app) {
-        new routes_1.default(app);
+    Api.prototype.router = function (app, auth) {
+        new routes_1.default(app, auth);
     };
     return Api;
 }());
