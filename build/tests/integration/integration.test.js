@@ -1,36 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var helpers_1 = require("./config/helpers");
+var HTTPStatus = require("http-status");
 describe('Testes de Integração', function () {
-    describe('GET /', function () {
-        it('Deve retornar a mensagem Página principal', function (done) {
-            helpers_1.request(helpers_1.app)
-                .get('/')
-                .end(function (error, res) {
-                helpers_1.expect(res.status).to.equal(200);
-                helpers_1.expect(res.text).to.be.eql('Página principal');
-                done(error);
-            });
-        });
-    });
-    describe('GET /ola/:nome', function () {
-        it('Deve retornar a mensagem Olá, Typescript Course', function (done) {
-            var nome = 'Typescript Course';
-            helpers_1.request(helpers_1.app)
-                .get("/ola/" + nome)
-                .end(function (error, res) {
-                helpers_1.expect(res.status).to.equal(200);
-                helpers_1.expect(res.text).to.be.eql("Hello Typescript Course");
-                done(error);
-            });
-        });
-    });
     describe('GET /api/users/all', function () {
         it('Deve retornar um json com todos os Usuários', function (done) {
             helpers_1.request(helpers_1.app)
                 .get('/api/users/all')
                 .end(function (error, res) {
-                helpers_1.expect(res.status).to.equal(200);
+                helpers_1.expect(res.status).to.equal(HTTPStatus.OK);
+                done(error);
             });
         });
     });
@@ -41,48 +20,52 @@ describe('Testes de Integração', function () {
             helpers_1.request(helpers_1.app)
                 .get("/api/users/" + 1)
                 .end(function (error, res) {
-                helpers_1.expect(res.status).to.equal(200);
+                helpers_1.expect(res.status).to.equal(HTTPStatus.OK);
+                done(error);
             });
         });
     });
 });
 describe('Testes de Integração', function () {
-    describe('POST /api/users/new', function () {
+    describe('POST /api/users/create', function () {
         it('Deve adicionar um novo Usuário', function (done) {
             var user = {
                 nome: 'Teste'
             };
             helpers_1.request(helpers_1.app)
-                .post('/api/users/new')
+                .post('/api/users/create')
                 .send(user)
                 .end(function (error, res) {
-                helpers_1.expect(res.status).to.equal(200);
+                helpers_1.expect(res.status).to.equal(HTTPStatus.OK);
+                done(error);
             });
         });
     });
 });
 describe('Testes de Integração', function () {
-    describe('PUT /api/users/:id/edit', function () {
+    describe('PUT /api/users/:id/update', function () {
         it('Deve atualizar um Usuário', function (done) {
             var user = {
                 nome: 'TesteUpdate'
             };
             helpers_1.request(helpers_1.app)
-                .put("/api/users/" + 1 + "/edit")
+                .put("/api/users/" + 1 + "/update")
                 .send(user)
                 .end(function (error, res) {
-                helpers_1.expect(res.status).to.equal(200);
+                helpers_1.expect(res.status).to.equal(HTTPStatus.OK);
+                done(error);
             });
         });
     });
 });
 describe('Testes de Integração', function () {
-    describe('DELETE /api/users/:id', function () {
+    describe('DELETE /api/users/:id/destroy', function () {
         it('Deve deletar um usuário', function (done) {
             helpers_1.request(helpers_1.app)
-                .put("/api/users/" + 1)
+                .delete("/api/users/" + 1 + "/destroy")
                 .end(function (error, res) {
-                helpers_1.expect(res.status).to.equal(200);
+                helpers_1.expect(res.status).to.equal(HTTPStatus.OK);
+                done(error);
             });
         });
     });

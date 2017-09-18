@@ -14,8 +14,8 @@ class Routes {
         app.route('/api/users/all').get(this.router.index);
         app.route('/api/users/create').post(this.router.create);
         app.route('/api/users/:id').get(this.router.findOne);
-        app.route('/api/users/:id/update').post(this.router.update);
-        app.route('/api/users/:id/destroy').post(this.router.destroy);
+        app.route('/api/users/:id/update').put(this.router.update);
+        app.route('/api/users/:id/destroy').delete(this.router.destroy);
     }
 }
 
